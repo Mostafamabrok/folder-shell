@@ -4,5 +4,6 @@ $inputpath=Read-Host
 $sortedpath=Get-Childitem $inputpath
 foreach ($file in $sortedpath) {
     $filename=$file.FullName
-    echo $filename
+    $extension=[IO.Path]::GetExtension($filename)
+    
 }
