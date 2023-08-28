@@ -22,6 +22,7 @@ function SortFiles {
     }    
 }
 
-#
+#Next feature to be added: A way to save folders as storage place
+#Another important feature: A way to navigate folders
 
 Introduction
