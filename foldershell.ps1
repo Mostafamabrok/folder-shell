@@ -1,7 +1,7 @@
 function Introduction {
-    Write-Host "Folder-Shell, Developed by MST Studios"
+    Write-Host "Folder-Shell, Developed by MST Studios`n"
     Write-Host "What would you like to do? (Enter the number of the respective action.)"
-    Write-Host "1-Sort Files in a Given directory"
+    Write-Host "1-Sort Files in a Given directory`n"
 
     $chosen_action=Read-Host "Action:"
 
