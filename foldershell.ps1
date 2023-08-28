@@ -8,7 +8,7 @@ function Introduction {
     if ($chosen_action -eq 1){SortFiles}
 }
 
-function SortFiles {
+function SortFiles { #This function sorts files in a directory inputed by the user.
     Write-Host "Input the path you would like to be sorted:"
     $inputpath=Read-Host
     $sortedpath=Get-Childitem $inputpath
