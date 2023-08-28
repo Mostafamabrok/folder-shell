@@ -1,4 +1,5 @@
 function Introduction {
+    #The introduction function. Introduces the program and asks the user what action to take.
     Write-Host "Folder-Shell, Developed by MST Studios`n"
     Write-Host "What would you like to do? (Enter the number of the respective action.)"
     Write-Host "1-Sort Files in a Given directory`n"
@@ -8,7 +9,8 @@ function Introduction {
     if ($chosen_action -eq 1){SortFiles}
 }
 
-function SortFiles { #This function sorts files in a directory inputed by the user.
+function SortFiles { 
+    #This function sorts files in a directory inputed by the user.
     Write-Host "Input the path you would like to be sorted:"
     $inputpath=Read-Host
     $sortedpath=Get-Childitem $inputpath
