@@ -3,10 +3,12 @@ function Introduction {
     Write-Host "Folder-Shell, Developed by MST Studios`n"
     Write-Host "What would you like to do? (Enter the number of the respective action.)"
     Write-Host "1-Sort Files in a Given directory`n"
+    Write-Host "2-Move a File`n"
 
     $chosen_action=Read-Host "Action:"
 
     if ($chosen_action -eq 1){SortFiles}
+    if ($chosen_action -eq 2){SendFiles}
 }
 
 function SortFiles { 
