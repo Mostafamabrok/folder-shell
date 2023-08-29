@@ -18,6 +18,7 @@ function SortFiles {
     Write-Host "Input the path you would like to be sorted:"
     $inputpath=Read-Host
     $sortedpath=Get-Childitem $inputpath
+
     foreach ($file in $sortedpath) {
         $filename=$file.FullName
         $extension=[IO.Path]::GetExtension($filename)
@@ -29,16 +30,18 @@ function SortFiles {
 function SendFiles{
     $SendSource=Read-Host "Enter the path of the file you'd like to send."
     $ManualOrAuto=Read-Host "Would you like to use one of your saved directories? (y/n)"
+
     if ($ManualOrAuto -eq "y"){
         $sendfiletextcontent=Get-Content -Path SavedDestinations.txt
         Write-Host $sendfiletextcontent
         $chosen_saved_directory=Read-Host "Chose a Path"
+
         foreach ($pathname in $sendfiletextcontent){
             if ($pathname -like "*$chosen_saved_directory-*"){
                 $final_send_choice=($pathname).trim("$chosen_saved_directory-}")
             }
         } 
-
+        
         Move-Item -Path $SendSource -Destination $final_send_choice
     }
 
@@ -68,8 +71,8 @@ function ChangeFileConfig{
         }
     }
 
-    }
-#Next feature to be added: A way to save folders as storage place
-#Another important feature: A way to navigate folders
+}
+
+#Next Thing to be added: A way to navigate folders
 
 Introduction
