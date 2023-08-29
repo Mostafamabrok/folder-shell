@@ -22,6 +22,12 @@ function SortFiles {
     }    
 }
 
+function SendFiles{
+    $SendSource=Read-Host "Enter the path of the file you'd like to send."
+    $DesitnationSource=Read-Host "Enter Where you'd like it to be sent"
+    Move-Item -Path $sortedpath -Destination $DesitnationSource
+}
+
 #Next feature to be added: A way to save folders as storage place
 #Another important feature: A way to navigate folders
 
