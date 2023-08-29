@@ -28,12 +28,28 @@ function SortFiles {
 
 function SendFiles{
     $SendSource=Read-Host "Enter the path of the file you'd like to send."
-    $SendDestination=Read-Host "Enter Where you'd like it to be sent"
-    Move-Item -Path $SendSource -Destination $SendDestination
+    $ManualOrAuto=Read-Host "Would you like to use one of your saved directories? (y/n)"
+    if ($ManualOrAuto -eq "y"){
+        $sendfiletextcontent=Get-Content -Path SavedDestinations.txt
+        Write-Host $sendfiletextcontent
+        $chosen_saved_directory=Read-Host "Chose a Path"
+        foreach ($pathname in $sendfiletextcontent){
+            if ($pathname -like "*$chosen_saved_directory-*"){
+                $final_send_choice=($pathname).trim("$chosen_saved_directory-}")
+            }
+        } 
+
+        Move-Item -Path $SendSource -Destination $final_send_choice
+    }
+
+    if ($ManualOrAuto -eq "n"){
+        $SendDestination=Read-Host "Enter Where you'd like it to be sent"
+        Move-Item -Path $SendSource -Destination $SendDestination
+    }
 }
 
 function ChangeFileConfig{
-    Write-Host "Would you like to view, add, delete your saved locations? (v/a/d)"
+    Write-Host "Would you like to view, add, delete your saved locations? (deleting is currently not working) (v/a/d)"
     $config_chosen_action=Read-Host
 
     if ($config_chosen_action -eq "v"){
@@ -42,13 +58,13 @@ function ChangeFileConfig{
 
     if ($config_chosen_action -eq "a"){
         if (Test-Path SavedDestinations.txt){
-            $config_length=(Get-Content SavedDestinations.txt).Length+1
-            $content_to_be_added=Read-Host "Enter a path you'd like to save:"
-            "$config_length-"+$content_to_be_added >> SavedDestinations.txt
+            $config_length=Get-Content SavedDestinations.txt | Measure-Object -Line | Select-Object Lines
+            $content_to_be_added=Read-Host
+            ("$config_length-").trim("L","i","n","e","s", "{", "}", "@","=")+$content_to_be_added >> SavedDestinations.txt
         }
         else{
             $content_to_be_added=Read-Host "Enter a path you'd like to save:"
-            "1-$content_to_be_added" >> SavedDestinations.txt
+            "0}-$content_to_be_added" >> SavedDestinations.txt
         }
     }
 
