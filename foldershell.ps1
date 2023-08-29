@@ -4,11 +4,13 @@ function Introduction {
     Write-Host "What would you like to do? (Enter the number of the respective action.)"
     Write-Host "1-Sort Files in a Given directory`n"
     Write-Host "2-Move a File`n"
+    Write-Host "3-Change Saved Directories"
 
     $chosen_action=Read-Host "Action:"
 
     if ($chosen_action -eq 1){SortFiles}
     if ($chosen_action -eq 2){SendFiles}
+    if ($chosen_action -eq 3){ChangeFileConfig}
 }
 
 function SortFiles { 
@@ -30,6 +32,27 @@ function SendFiles{
     Move-Item -Path $SendSource -Destination $SendDestination
 }
 
+function ChangeFileConfig{
+    Write-Host "Would you like to view, add, delete your saved locations? (v/a/d)"
+    $config_chosen_action=Read-Host
+
+    if ($config_chosen_action -eq "v"){
+        Get-Content -Path SavedDestinations.txt
+    }
+
+    if ($config_chosen_action -eq "a"){
+        if (Test-Path SavedDestinations.txt){
+            $config_length=(Get-Content SavedDestinations.txt).Length+1
+            $content_to_be_added=Read-Host "Enter a path you'd like to save:"
+            "$config_length-"+$content_to_be_added >> SavedDestinations.txt
+        }
+        else{
+            $content_to_be_added=Read-Host "Enter a path you'd like to save:"
+            "1-$content_to_be_added" >> SavedDestinations.txt
+        }
+    }
+
+    }
 #Next feature to be added: A way to save folders as storage place
 #Another important feature: A way to navigate folders
 
