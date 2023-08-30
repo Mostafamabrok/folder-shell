@@ -14,7 +14,7 @@ function Introduction {
     if ($chosen_action -eq 3){ChangeFileConfig}
     if ($chosen_action -eq 4){Write-Host "Closing..."}
 
-    else{Write-Host "INVALID ARGUMENT"}
+    else{Write-Host "INVALID ARGUMENT, PLEASE ENTER A VALID ARGUMENT`n"; Introduction}
 }
 
 function SortFiles { 
