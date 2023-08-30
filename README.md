@@ -1,12 +1,12 @@
-# folder-shell
+# Folder-shell
 Folder shell is a file managing software powered by PowerShell.
 
 ### How to Use
-* Download the source code in a zip file.
+* Download powershell.exe from the releases page.
 
-* Un-Zip the file.
+* Move `FolderShell.exe` into a location that isn't likely to change.
 
-* Run `foldershell.ps1` with Powershell.
+* Run `FolderShell.exe`.
 
 ### Feature plan
 - [x] A tool that sorts files in a directory into folders.
