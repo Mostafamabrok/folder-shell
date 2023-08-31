@@ -5,7 +5,7 @@ function Introduction {
     Write-Host "1-Sort Files in a Given directory"
     Write-Host "2-Move a File"
     Write-Host "3-Change Saved Directories"
-    Write-Host "4-Check a File's Properties"
+    Write-Host "4-Check a File or Folder's Properties"
     Write-Host "5-Close Application`n"
 
     $chosen_action=Read-Host "Action"
@@ -13,14 +13,14 @@ function Introduction {
     if ($chosen_action -eq 1){SortFiles}
     if ($chosen_action -eq 2){SendFiles}
     if ($chosen_action -eq 3){ChangeFileConfig}
-    if ($chosen_action -eq 4){CheckFile}
+    if ($chosen_action -eq 4){CheckFileFolder}
     if ($chosen_action -eq 5){exit}
 
     Introduction
 }
 
-function CheckFile{
-    $desired_check=Read-Host "Enter the path of the file you'd like to check"
+function CheckFileFolder{
+    $desired_check=Read-Host "Enter the path of the folder or file you'd like to check"
     Write-Host "Displaying info..."
     Get-Item $desired_check
     $enderman=Read-Host "Ok?"
