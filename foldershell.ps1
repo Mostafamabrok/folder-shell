@@ -89,6 +89,4 @@ function ChangeFileConfig{
 
 }
 
-#Next Thing to be added: A way to navigate folders
-
 Introduction
