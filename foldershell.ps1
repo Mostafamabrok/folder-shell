@@ -77,11 +77,15 @@ function ChangeFileConfig{
         if (Test-Path SavedDestinations.txt){
             $config_length=Get-Content SavedDestinations.txt | Measure-Object -Line | Select-Object Lines
             $content_to_be_added=Read-Host "Enter a path you'd like to save"
-            ("$config_length-").trim("L","i","n","e","s", "{", "}", "@","=")+$content_to_be_added >> SavedDestinations.txt
+            if (Test-Path $content_to_be_added){("$config_length-").trim("L","i","n","e","s", "{", "}", "@","=")+$content_to_be_added >> SavedDestinations.txt}
+            else{Write-Host "INVALID PATH, PLEASE ENTER A VALID PATH"}
         }
         else{
             $content_to_be_added=Read-Host "Enter a path you'd like to save"
-            "0}-$content_to_be_added" >> SavedDestinations.txt
+            if (Test-Path $content_to_be_added){"0}-$content_to_be_added" >> SavedDestinations.txt}
+            else{Write-Host "INVALID PATH, PLEASE ENTER A VALID PATH"}
+            
+            
         }
     }
 
