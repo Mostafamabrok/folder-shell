@@ -24,7 +24,7 @@ function CheckFileFolder{
     Write-Host "Displaying info..."
     Get-Item $desired_check
     $enderman=Read-Host "Ok?"
-    if ($enderman -eq "yes"){Write-Host "Why?"}
+    if ($enderman -eq "yes"){Write-Host "Why?"} #This is used to make sure that the user can keep the info on the screen.
 }
 
 function SortFiles { 
@@ -45,21 +45,21 @@ function SendFiles{
     $SendSource=Read-Host "Enter the path of the file you'd like to send."
     $ManualOrAuto=Read-Host "Would you like to use one of your saved directories? (y/n)"
 
-    if ($ManualOrAuto -eq "y"){
-        $sendfiletextcontent=Get-Content -Path SavedDestinations.txt
-        Write-Host $sendfiletextcontent
+    if ($ManualOrAuto -eq "y"){ #If the user choses to use one of their saved directories, execute these commands.
+        $sendfiletextcontent=Get-Content -Path SavedDestinations.txt #This is the content of SavedDestinations.txt.
+        Write-Host $sendfiletextcontent #This writes that content.
         $chosen_saved_directory=Read-Host "Chose a Path"
 
-        foreach ($pathname in $sendfiletextcontent){
+        foreach ($pathname in $sendfiletextcontent){ #This checks every saved directory if it matches the directory the user wants to send a file to.
             if ($pathname -like "*$chosen_saved_directory-*"){
-                $final_send_choice=($pathname).trim("$chosen_saved_directory-}")
+                $final_send_choice=($pathname).trim("$chosen_saved_directory-}") #This creates the pathname that is used to send the file
             }
         } 
         
-        Move-Item -Path $SendSource -Destination $final_send_choice
+        Move-Item -Path $SendSource -Destination $final_send_choice #This line moves the file.
     }
 
-    if ($ManualOrAuto -eq "n"){
+    if ($ManualOrAuto -eq "n"){ #This function just takes where a file is and where to send it.
         $SendDestination=Read-Host "Enter Where you'd like it to be sent"
         Move-Item -Path $SendSource -Destination $SendDestination
     }
@@ -69,28 +69,26 @@ function ChangeFileConfig{
     Write-Host "Would you like to view, add, delete your saved locations? (v/a/d)"
     $config_chosen_action=Read-Host
 
-    if ($config_chosen_action -eq "v"){
+    if ($config_chosen_action -eq "v"){ #If the user choses to view their saved directories.
         Get-Content -Path SavedDestinations.txt
     }
 
-    if ($config_chosen_action -eq "a"){
+    if ($config_chosen_action -eq "a"){ #If the User choses to add to their saved directories.
         if (Test-Path SavedDestinations.txt){
-            $config_length=Get-Content SavedDestinations.txt | Measure-Object -Line | Select-Object Lines
+            $config_length=Get-Content SavedDestinations.txt | Measure-Object -Line | Select-Object Lines #This variable has the amount of lines in Saved Destinations (saved directory amount).
             $content_to_be_added=Read-Host "Enter a path you'd like to save"
-            if (Test-Path $content_to_be_added){("$config_length-").trim("L","i","n","e","s", "{", "}", "@","=")+$content_to_be_added >> SavedDestinations.txt}
+            if (Test-Path $content_to_be_added){("$config_length-").trim("L","i","n","e","s", "{", "}", "@","=")+$content_to_be_added >> SavedDestinations.txt} #Trim $configlength to a usable variable.
+            #This checks if the path the user is trying to add is actually there. If not, It writes a message saying that the path is invalid.
             else{Write-Host "INVALID PATH, PLEASE ENTER A VALID PATH"}
         }
         else{
             $content_to_be_added=Read-Host "Enter a path you'd like to save"
             if (Test-Path $content_to_be_added){"0}-$content_to_be_added" >> SavedDestinations.txt}
-            else{Write-Host "INVALID PATH, PLEASE ENTER A VALID PATH"}
-            
-            
+            else{Write-Host "INVALID PATH, PLEASE ENTER A VALID PATH"} #This also checks if the path exists, and writes a message if not.
         }
     }
 
-    if ($config_chosen_action -eq "d"){Remove-Item SavedDestinations.txt; Write-Host "Content Deleted"}
-
+    if ($config_chosen_action -eq "d"){Remove-Item SavedDestinations.txt; Write-Host "Content Deleted"} #This Deletes SavedDestination.txt.
 }
 
 Introduction
