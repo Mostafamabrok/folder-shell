@@ -37,7 +37,7 @@ function DeleteDirectory {
 }
 
 function SortFiles { 
-    #This function sorts files in a directory inputed by the user and moves them into seperate folders based on their extension.
+    #This function sorts files in a directory inputed by the user and moves them into seperate folders based on their extension (file type).
     Write-Host "Input the path you would like to be sorted:"
     $inputpath=Read-Host
     $sortedpath=Get-Childitem $inputpath
