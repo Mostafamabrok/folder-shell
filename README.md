@@ -11,4 +11,5 @@ Folder shell is a file managing software powered by PowerShell.
 ### Feature plan
 - [x] A tool that sorts files in a directory into folders.
 - [x] A tool that can send files to and back from certain directories.
-- [ ] A way to check properties of files and folders
+- [ ] A way to check properties of files and folders.
+- [ ] A way to delete or move all files in a folder.
