@@ -22,7 +22,7 @@ function Introduction {
 function CheckFile{
     $desired_check=Read-Host "Enter the path of the file you'd like to check"
     Write-Host "Displaying info..."
-    Get-Item $desired_check `n
+    Get-Item $desired_check
     $enderman=Read-Host "Ok?"
     if ($enderman -eq "yes"){Write-Host "Why?"}
 }
