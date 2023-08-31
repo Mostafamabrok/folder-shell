@@ -5,16 +5,18 @@ function Introduction {
     Write-Host "1-Check a File or Folder's Properties"
     Write-Host "2-Move a File"
     Write-Host "3-Sort Files in a Given Directory"
-    Write-Host "4-Change or view Saved destinations."
-    Write-Host "5-Close Application`n"
+    Write-Host "4-Delete all files in a given directory"
+    Write-Host "5-Change or view Saved destinations."
+    Write-Host "6-Close Application`n"
 
     $chosen_action=Read-Host "Action"
 
     if ($chosen_action -eq 1){CheckFileFolder}
     if ($chosen_action -eq 2){SendFiles}
     if ($chosen_action -eq 3){SortFiles}
-    if ($chosen_action -eq 4){ChangeFileConfig}
-    if ($chosen_action -eq 5){exit}
+    if ($chosen_action -eq 4){DeleteDirectory}
+    if ($chosen_action -eq 5){ChangeFileConfig}
+    if ($chosen_action -eq 6){exit}
 
     else{Write-Host "'$chosen_action' is not a valid action. Please enter a number for a valid action. Only Enter a number, No spaces."}
 
@@ -27,6 +29,11 @@ function CheckFileFolder{
     Get-Item $desired_check
     $enderman=Read-Host "Ok?"
     if ($enderman -eq "yes"){Write-Host "Why?"} #This is used to make sure that the user can keep the info on the screen.
+}
+
+function DeleteDirectory {
+    $directory_to_delete=Read-Host "What Directory Would you like to empty? (Enter a Full path)"
+    foreach ($file in (Get-ChildItem $directory_to_delete).FullName){Remove-Item $file}
 }
 
 function SortFiles { 
