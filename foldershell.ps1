@@ -5,17 +5,22 @@ function Introduction {
     Write-Host "1-Sort Files in a Given directory"
     Write-Host "2-Move a File"
     Write-Host "3-Change Saved Directories"
-    Write-Host "4-Close Application`n"
+    Write-Host "4-Check a File's Properties"
+    Write-Host "5-Close Application`n"
 
     $chosen_action=Read-Host "Action"
 
     if ($chosen_action -eq 1){SortFiles}
     if ($chosen_action -eq 2){SendFiles}
     if ($chosen_action -eq 3){ChangeFileConfig}
-    if ($chosen_action -eq 4){Write-Host "Closing..."}
+    if ($chosen_action -eq 4){CheckFile}
+    if ($chosen_action -eq 5){Write-Host "Closing..."}
 
 }
 
+function CheckFile{
+
+}
 function SortFiles { 
     #This function sorts files in a directory inputed by the user and moves them into seperate folders based on their extension.
     Write-Host "Input the path you would like to be sorted:"
