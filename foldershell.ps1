@@ -2,18 +2,18 @@ function Introduction {
     #The introduction function. Introduces the program and asks the user what action to take.
     Write-Host "Folder-Shell, Developed by MST Studios`n" -ForegroundColor White
     Write-Host "What would you like to do? (Enter the number of the respective action.)`n"
-    Write-Host "1-Sort Files in a Given directory"
+    Write-Host "1-Check a File or Folder's Properties"
     Write-Host "2-Move a File"
-    Write-Host "3-Change Saved Directories"
-    Write-Host "4-Check a File or Folder's Properties"
+    Write-Host "3-Sort Files in a Given Directory"
+    Write-Host "4-Change or view Saved destinations."
     Write-Host "5-Close Application`n"
 
     $chosen_action=Read-Host "Action"
 
-    if ($chosen_action -eq 1){SortFiles}
+    if ($chosen_action -eq 1){CheckFileFolder}
     if ($chosen_action -eq 2){SendFiles}
-    if ($chosen_action -eq 3){ChangeFileConfig}
-    if ($chosen_action -eq 4){CheckFileFolder}
+    if ($chosen_action -eq 3){SortFiles}
+    if ($chosen_action -eq 4){ChangeFileConfig}
     if ($chosen_action -eq 5){exit}
 
     else{Write-Host "'$chosen_action' is not a valid action. Please enter a number for a valid action. Only Enter a number, No spaces."}
