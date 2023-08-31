@@ -24,7 +24,7 @@ function CheckFile{
     Get-Item $desired_check `n
     $enderman=Read-Host "Ok?"
     if ($enderman -eq "yes"){Write-Host "Why?"}
-    }
+}
 
 function SortFiles { 
     #This function sorts files in a directory inputed by the user and moves them into seperate folders based on their extension.
