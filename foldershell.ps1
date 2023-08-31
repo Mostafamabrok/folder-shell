@@ -32,7 +32,18 @@ function CheckFileFolder{
 }
 
 function DeleteDirectory {
-    $directory_to_delete=Read-Host "What Directory Would you like to empty? (Enter a Full path)"
+    $ManualOrAuto=Read-Host "Would you like to use one of your saved directory? (y/n)"
+    if ($ManualOrAuto -eq "y"){
+        Get-Content SavedDestinations.txt
+        $chosen_saved_directory=Read-Host "Chose a path"
+
+        foreach($pathname in Get-Content SavedDestinations.txt){
+            if ($pathname -like "*$chosen_saved_directory*"){$directory_to_delete=($pathname).trim("$chosen_saved_directory-}")}
+        }
+    }
+
+    if ($ManualOrAuto -eq "n"){$directory_to_delete=Read-Host "What Directory Would you like to empty? (Enter a Full path)"}
+    
     foreach ($file in (Get-ChildItem $directory_to_delete).FullName){Remove-Item $file}
 }
 
