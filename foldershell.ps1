@@ -100,4 +100,4 @@ function ChangeFileConfig{
     if ($config_chosen_action -eq "d"){Remove-Item SavedDestinations.txt; Write-Host "Content Deleted"} #This Deletes SavedDestination.txt.
 }
 
-Introduction
+Introduction #This starts the program itself.
