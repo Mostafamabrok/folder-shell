@@ -14,8 +14,9 @@ function Introduction {
     if ($chosen_action -eq 2){SendFiles}
     if ($chosen_action -eq 3){ChangeFileConfig}
     if ($chosen_action -eq 4){CheckFile}
-    if ($chosen_action -eq 5){Write-Host "Closing..."}
+    if ($chosen_action -eq 5){exit}
 
+    Introduction
 }
 
 function CheckFile{
