@@ -12,11 +12,11 @@ function Introduction {
     $chosen_action=Read-Host "Action"
 
     if ($chosen_action -eq 1){CheckFileFolder}
-    if ($chosen_action -eq 2){SendFiles}
-    if ($chosen_action -eq 3){SortFiles}
-    if ($chosen_action -eq 4){DeleteDirectory}
-    if ($chosen_action -eq 5){ChangeFileConfig}
-    if ($chosen_action -eq 6){exit}
+    elseif ($chosen_action -eq 2){SendFiles}
+    elseif ($chosen_action -eq 3){SortFiles}
+    elseif ($chosen_action -eq 4){DeleteDirectory}
+    elseif ($chosen_action -eq 5){ChangeFileConfig}
+    elseif ($chosen_action -eq 6){exit}
 
     else{Write-Host "'$chosen_action' is not a valid action. Please enter a number for a valid action. Only Enter a number, No spaces."}
 
