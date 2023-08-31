@@ -19,8 +19,13 @@ function Introduction {
 }
 
 function CheckFile{
+    $desired_check=Read-Host "Enter the path of the file you'd like to check"
+    Write-Host "Displaying info..."
+    Get-Item $desired_check `n
+    $enderman=Read-Host "Ok?"
+    if ($enderman -eq "yes"){Write-Host "Why?"}
+    }
 
-}
 function SortFiles { 
     #This function sorts files in a directory inputed by the user and moves them into seperate folders based on their extension.
     Write-Host "Input the path you would like to be sorted:"
