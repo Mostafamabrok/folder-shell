@@ -47,18 +47,25 @@ function DeleteDirectory {
     foreach ($file in (Get-ChildItem $directory_to_delete).FullName){Remove-Item $file}
 }
 
-function SortFiles { 
-    #This function sorts files in a directory inputed by the user and moves them into seperate folders based on their extension (file type).
-    Write-Host "Input the path you would like to be sorted:"
-    $inputpath=Read-Host
-    $sortedpath=Get-Childitem $inputpath
+function SortFiles {
+    $sort_type=Read-Host "Would you like to sort by file type, size, or date of modification? (t/s/d)"
+    if ($sort_type -eq "t"){
+        #This function sorts files in a directory inputed by the user and moves them into seperate folders based on their extension (file type).   
+        Write-Host "Sorting by type."
+        Write-Host "Input the path you would like to be sorted:"
+        $inputpath=Read-Host
+        $sortedpath=Get-Childitem $inputpath
 
-    foreach ($file in $sortedpath) {
-        $filename=$file.FullName
-        $extension=[IO.Path]::GetExtension($filename)
-        mkdir "$inputpath\$extension\" -ErrorAction SilentlyContinue
-        Move-Item -Path "$filename" -Destination "$inputpath\$extension\"
-    }    
+        foreach ($file in $sortedpath) {
+            $filename=$file.FullName
+            $extension=[IO.Path]::GetExtension($filename)
+            mkdir "$inputpath\$extension\" -ErrorAction SilentlyContinue
+            Move-Item -Path "$filename" -Destination "$inputpath\$extension\"
+        }    
+    }
+
+    if ($sort_type -eq "s"){Write-Host "Being Worked on"}
+    if ($sort_type -eq "d"){Write-Host "Being Worked on"}
 }
 
 function SendFiles{
