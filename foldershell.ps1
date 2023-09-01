@@ -1,6 +1,6 @@
 function Introduction {
     #The introduction function. Introduces the program and asks the user what action to take.
-    Write-Host "Folder-Shell, Developed by MST Studios`n" -ForegroundColor White
+    Write-Host "Folder-Shell, Developed by MSTF Studios`n" -ForegroundColor White
     Write-Host "What would you like to do? (Enter the number of the respective action.)`n"
     Write-Host "1-Check a File or Folder's Properties"
     Write-Host "2-Move a File"
