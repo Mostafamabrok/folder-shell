@@ -64,8 +64,9 @@ function SortFiles {
         }    
     }
 
-    if ($sort_type -eq "s"){Write-Host "Being Worked on"}
-    if ($sort_type -eq "d"){Write-Host "Being Worked on"}
+    if ($sort_type -eq "s"){Write-Host "This Feature is currently being worked on."}
+    if ($sort_type -eq "d"){Write-Host "This Feature is currently being worked on."}
+
     if ($sort_type -eq "n"){ #This sorts based on a special feature in a files name
         $path_tobe_sorted=Read-Host "Input the path you would like to be sorted"
         $name_feature=Read-Host "Input the name feature of your desired files to sort. (Special thing in their name)"
