@@ -54,7 +54,7 @@ function SortFiles {
         Write-Host "Sorting by type."
         Write-Host "Input the path you would like to be sorted:"
         $inputpath=Read-Host
-        $sortedpath=Get-Childitem $inputpath
+        $sortedpath=Get-Childitem $inputpath 
 
         foreach ($file in $sortedpath) {
             $filename=$file.FullName
@@ -66,7 +66,12 @@ function SortFiles {
 
     if ($sort_type -eq "s"){Write-Host "Being Worked on"}
     if ($sort_type -eq "d"){Write-Host "Being Worked on"}
-    if ($sort_type -eq "n"){Write-Host "Being Worked on"}
+    if ($sort_type -eq "n"){ #This sorts based on a special feature in a files name
+        $path_tobe_sorted=Read-Host "Input the path you would like to be sorted"
+        $name_feature=Read-Host "Input the name feature of your desired files to sort. (Special thing in their name)"
+        mkdir "$path_tobe_sorted\$name_feature"
+        Get-ChildItem $path_tobe_sorted | ForEach-Object {if ($_.Name -like "*$name_feature*"){Move-Item -Path $_.FullName -Destination "$path_tobe_sorted\$name_feature"}} -ErrorAction SilentlyContinue
+    }
 }
 
 function SendFiles{
