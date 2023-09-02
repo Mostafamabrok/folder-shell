@@ -125,4 +125,6 @@ function ChangeFileConfig{
     if ($config_chosen_action -eq "d"){Remove-Item SavedDestinations.txt; Write-Host "Content Deleted"} #This Deletes SavedDestination.txt.
 }
 
+$restricted_paths=@("C:\", "C:\Users", "C:\Users", "C:\Users\$env:UserName\", "C:\Windows", "C:\Windows\System32") #This is a list of directories not to be modified. There will be future additons to this array in the future.
+
 Introduction #This starts the program itself.
