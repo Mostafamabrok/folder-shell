@@ -34,7 +34,7 @@ function CheckFileFolder{
     Write-Host "Displaying info..."
     Get-Item $desired_check
     $enderman=Read-Host "Ok?"
-    if ($enderman -eq "yes"){Write-Host "Why?"} #This is used to make sure that the user can keep the info on the screen.
+    if ($enderman -eq "yes"){Write-Host "Why?"} #This is used to make sure that the user can keep the info on the screen without scrolling up.
 }
 
 function DeleteDirectory {
