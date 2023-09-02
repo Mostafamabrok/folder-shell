@@ -24,7 +24,7 @@ function Introduction {
 }
 
 function AntiBrick{
-    Write-Host "You are attempting to modify an essential path, This is a potentially catastrophic action. The program will not Proceed"
+    Write-Host "You are attempting to modify an essential path, This is a potentially catastrophic action. The program will not proceed."
     Read-Host "Press any key to stop the program"
     exit
 }
