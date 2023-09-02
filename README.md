@@ -2,7 +2,7 @@
 Folder shell is a file managing software powered by PowerShell.
 
 ### How to Use
-* Download powershell.exe from the releases page.
+* Download `FolderShell.exe` from the releases page.
 
 * Move `FolderShell.exe` into a location that isn't likely to change.
 
