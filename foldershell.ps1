@@ -48,7 +48,7 @@ function DeleteDirectory {
 }
 
 function SortFiles {
-    $sort_type=Read-Host "Would you like to sort by file type, size, or date of modification? (t/s/d)"
+    $sort_type=Read-Host "Would you like to sort by file type, size, date of modification, or name feature? (t/s/d/n)"
     if ($sort_type -eq "t"){
         #This function sorts files in a directory inputed by the user and moves them into seperate folders based on their extension (file type).   
         Write-Host "Sorting by type."
@@ -66,6 +66,7 @@ function SortFiles {
 
     if ($sort_type -eq "s"){Write-Host "Being Worked on"}
     if ($sort_type -eq "d"){Write-Host "Being Worked on"}
+    if ($sort_type -eq "n"){Write-Host "Being Worked on"}
 }
 
 function SendFiles{
