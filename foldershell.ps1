@@ -23,6 +23,12 @@ function Introduction {
     Introduction
 }
 
+function AntiBrick{
+    Write-Host "You are attempting to modify an essential path, This is a potentially catastrophic action. The program will not Proceed"
+    Read-Host "Press any key to stop the program"
+    exit
+}
+
 function CheckFileFolder{
     $desired_check=Read-Host "Enter the path of the folder or file you'd like to check"
     Write-Host "Displaying info..."
@@ -42,7 +48,7 @@ function DeleteDirectory {
         }
     }
 
-    if ($ManualOrAuto -eq "n"){$directory_to_delete=Read-Host "What Directory Would you like to empty? (Enter a Full path)"}
+    if ($ManualOrAuto -eq "n"){$directory_to_delete=Read-Host "What Directory Would you like to empty? (Enter a Full path)"}; if ($restricted_paths -Contains $directory_to_delete ){AntiBrick}
     
     foreach ($file in (Get-ChildItem $directory_to_delete).FullName){Remove-Item $file}
 }
@@ -52,8 +58,8 @@ function SortFiles {
     if ($sort_type -eq "t"){
         #This function sorts files in a directory inputed by the user and moves them into seperate folders based on their extension (file type).   
         Write-Host "Sorting by type."
-        Write-Host "Input the path you would like to be sorted:"
-        $inputpath=Read-Host
+        Write-Host "Input the path you would like to be sorted:" 
+        $inputpath=Read-Host ; if ($restricted_paths -Contains $inputpath){AntiBrick}
         $sortedpath=Get-Childitem $inputpath 
 
         foreach ($file in $sortedpath) {
@@ -68,7 +74,7 @@ function SortFiles {
     if ($sort_type -eq "d"){Write-Host "This Feature is currently being worked on."}
 
     if ($sort_type -eq "n"){ #This sorts based on a special feature in a files name
-        $path_tobe_sorted=Read-Host "Input the path you would like to be sorted"
+        $path_tobe_sorted=Read-Host "Input the path you would like to be sorted" if ($restricted_paths -Contains $path_tobe_sorted ){AntiBrick}
         $name_feature=Read-Host "Input the name feature of your desired files to sort. (Special thing in their name)"
         mkdir "$path_tobe_sorted\$name_feature"
         Get-ChildItem $path_tobe_sorted | ForEach-Object {if ($_.Name -like "*$name_feature*"){Move-Item -Path $_.FullName -Destination "$path_tobe_sorted\$name_feature"}} -ErrorAction SilentlyContinue
