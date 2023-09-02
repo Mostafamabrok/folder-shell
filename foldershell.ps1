@@ -70,8 +70,8 @@ function SortFiles {
         }    
     }
 
-    if ($sort_type -eq "s"){Write-Host "This Feature is currently being worked on."}
-    if ($sort_type -eq "d"){Write-Host "This Feature is currently being worked on."}
+    if ($sort_type -eq "s"){Write-Host "This Feature is currently being worked on. Check the GitHub page for more info."}
+    if ($sort_type -eq "d"){Write-Host "This Feature is currently being worked on. Check the GitHub page for more info."}
 
     if ($sort_type -eq "n"){ #This sorts based on a special feature in a files name
         $path_tobe_sorted=Read-Host "Input the path you would like to be sorted" if ($restricted_paths -Contains $path_tobe_sorted ){AntiBrick}
