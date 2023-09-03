@@ -59,14 +59,14 @@ function SortFiles {
         #This function sorts files in a directory inputed by the user and moves them into seperate folders based on their extension (file type).   
         Write-Host "Sorting by type."
         Write-Host "Input the path you would like to be sorted:" 
-        $inputpath=Read-Host ; if ($restricted_paths -Contains $inputpath){AntiBrick}
-        $sortedpath=Get-Childitem $inputpath 
+        $path_tobe_sorted=Read-Host ; if ($restricted_paths -Contains $path_tobe_sorted){AntiBrick}
+        $sortedpath=Get-Childitem $path_tobe_sorted 
 
         foreach ($file in $sortedpath) {
             $filename=$file.FullName
             $extension=[IO.Path]::GetExtension($filename)
-            mkdir "$inputpath\$extension\" -ErrorAction SilentlyContinue
-            Move-Item -Path "$filename" -Destination "$inputpath\$extension\"
+            mkdir "$path_tobe_sorted\$extension\" -ErrorAction SilentlyContinue
+            Move-Item -Path "$filename" -Destination "$path_tobe_sorted\$extension\"
         }    
     }
 
