@@ -106,8 +106,7 @@ function SendFiles{
 }
 
 function ChangeFileConfig{
-    Write-Host "Would you like to view, add, delete your saved locations? (v/a/d)"
-    $config_chosen_action=Read-Host
+    $config_chosen_action=Read-Host "Would you like to view, add, delete your saved locations? (v/a/d)" #This asks the user for the type of sorting they want.
 
     if ($config_chosen_action -eq "v"){ #If the user choses to view their saved directories.
         Get-Content -Path SavedDestinations.txt
