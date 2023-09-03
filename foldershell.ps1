@@ -14,7 +14,7 @@ function Introduction {
     if ($chosen_action -eq 1){CheckFileFolder}
     elseif ($chosen_action -eq 2){SendFiles}
     elseif ($chosen_action -eq 3){SortFiles}
-    elseif ($chosen_action -eq 4){DeleteDirectory}
+    elseif ($chosen_action -eq 4){EmptyDirectory}
     elseif ($chosen_action -eq 5){ChangeFileConfig}
     elseif ($chosen_action -eq 6){Write-Host "Closing program..."; exit}
 
@@ -37,7 +37,7 @@ function CheckFileFolder{
     if ($enderman -eq "yes"){Write-Host "Why?"} #This is used to make sure that the user can keep the info on the screen without scrolling up.
 }
 
-function DeleteDirectory {
+function EmptyDirectory {
     $ManualOrAuto=Read-Host "Would you like to use one of your saved directory? (y/n)"
     if ($ManualOrAuto -eq "y"){
         Get-Content SavedDestinations.txt
