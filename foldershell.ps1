@@ -58,8 +58,7 @@ function SortFiles {
     if ($sort_type -eq "t"){
         #This function sorts files in a directory inputed by the user and moves them into seperate folders based on their extension (file type).   
         Write-Host "Sorting by type."
-        Write-Host "Input the path you would like to be sorted:" 
-        $path_tobe_sorted=Read-Host ; if ($restricted_paths -Contains $path_tobe_sorted){AntiBrick}
+        $path_tobe_sorted=Read-Host "Input the path you would like to be sorted:" ; if ($restricted_paths -Contains $path_tobe_sorted){AntiBrick}
         $sortedpath=Get-Childitem $path_tobe_sorted 
 
         foreach ($file in $sortedpath) {
