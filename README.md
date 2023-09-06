@@ -10,8 +10,12 @@ As of 6th of September of 2023, FolderShell's code is now complete. Documentatio
 
 * Run `FolderShell.exe`.
 
-### Feature plan
-- [x] A tool that sorts files in a directory into folders.
-- [x] A tool that can send files to and back from certain directories.
-- [x] A way to check properties of files and folders.
-- [x] A way to delete or move all files in a folder. (Only deleting is comlpete however)
+### Features
+
+* Sort files in a given directory based on their file type or a feature in the files'name.
+
+* Empty a given directory of files.
+
+* Send files to a pre-configured directory.
+
+* Check a file or folders property.
