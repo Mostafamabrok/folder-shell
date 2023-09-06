@@ -1,5 +1,6 @@
 # Folder-shell
 Folder shell is a file managing software powered by PowerShell.
+
 As of 6th of September of 2023, FolderShell's code is now complete. Documentation is still subject to change. 
 
 ### How to Use
